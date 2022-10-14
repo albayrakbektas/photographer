@@ -13,8 +13,8 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 app.use(bodyParser.json());
-app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 
 const upload = multer();
 
