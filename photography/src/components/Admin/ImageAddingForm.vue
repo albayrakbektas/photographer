@@ -1,7 +1,7 @@
 <template>
   <div class="image-adding-form-container">
     <CardMain>
-      <form @submit="submitFiles">
+      <form @submit.prevent="submitFiles">
         <div class="form-row row-file">
           <span class="selected-file">{{ files[0] ? files[0].name : "" }}</span>
           <label class="label-file" for="file"></label>
@@ -72,19 +72,25 @@ export default {
     changeFiles(e) {
       this.files = e.target.files;
     },
-    async submitFiles(e) {
+    submitFiles(e) {
       e.preventDefault();
       let formData = new FormData();
       formData.append("file", this.files[0]);
       formData.append("album", this.albumField.value);
       formData.append("description", this.textareaField.value);
-      await axios.post(
-        "https://photographer-albayrakbektas.vercel.app/api/upload/image",
-        formData
-      );
-      fetch("https://photographer-albayrakbektas.vercel.app/api/upload/image", {
-        method: "post",
-      })
+      axios
+        .post(
+          "https://photographer-albayrakbektas.vercel.app/api/upload/image",
+          formData
+        )
+        .then(() => {
+          fetch(
+            "https://photographer-albayrakbektas.vercel.app/api/upload/image",
+            {
+              method: "post",
+            }
+          );
+        })
         .then((response) => console.log(response))
         .catch((err) => console.log(err));
     },
