@@ -4,7 +4,7 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const multer = require("multer");
-const { uploadFile, listBuckets } = require("./firebase");
+const { uploadFile, listBuckets } = require("../firebase");
 let isAdmin = false;
 const admin = { name: "allperensahin", password: "123456" };
 
@@ -21,7 +21,7 @@ const upload = multer();
 //   return next(null, ["imageURl", "imageUrl", "...."]);
 // };
 
-app.get("/image/:imageID?", cors(), async (req, res) => {
+app.get("/api/image/:imageID?", cors(), async (req, res) => {
   const albums = await listBuckets();
   // await getFiles();
   res.status(200).send(albums);
@@ -33,14 +33,14 @@ app.get("/image/:imageID?", cors(), async (req, res) => {
   // });
 });
 
-app.get("/admin", (req, res) => {
+app.get("/api/admin", (req, res) => {
   if (!isAdmin) {
     res.send("/login");
   } else {
     res.send("ok");
   }
 });
-app.post("/login", (req, res) => {
+app.post("/api/login", (req, res) => {
   const { name, password } = req.body;
   console.log(name, password);
   if (name === admin.name && password === admin.password) {
@@ -52,7 +52,7 @@ app.post("/login", (req, res) => {
   }
 });
 
-app.post("/upload/image", upload.single("file"), async (req, res) => {
+app.post("/api/upload/image", upload.single("file"), async (req, res) => {
   await uploadFile(req.file, req.body.album, req.body.description)
     .then(() => {
       res.status(200).send("File successfully saved.");
@@ -74,7 +74,7 @@ app.post("/upload/image", upload.single("file"), async (req, res) => {
   // res.send("Ok")
   // else res.status(400).send({message: "hata mesaji"})
 });
-
-app.listen(port, "192.168.1.171", () => {
-  console.log(port);
-});
+module.exports = app;
+// app.listen(port, "192.168.1.171", () => {
+//   console.log(port);
+// });
