@@ -74,7 +74,6 @@ export default {
           for (let i = 0; i < imgContainers.length; i++) {
             const naturalHeight =
               imgContainers[i].children[0].children[0].naturalHeight;
-            console.log(imgContainers[i].children[0].children[0].naturalHeight);
             imgContainers[i].style.left = `0`;
             imgContainers[i].style.top = `${this.columnsTopHeights[0]}px`;
             this.columnsTopHeights[0] += naturalHeight + 16;

@@ -79,10 +79,10 @@ export default {
       formData.append("album", this.albumField.value);
       formData.append("description", this.textareaField.value);
       await axios.post(
-        "https://photographer-albayrakbektas.vercel.app/api/image",
+        "https://photographer-albayrakbektas.vercel.app/api/upload/image",
         formData
       );
-      fetch("https://photographer-albayrakbektas.vercel.app/api/image", {
+      fetch("https://photographer-albayrakbektas.vercel.app/api/upload/image", {
         method: "post",
       })
         .then((response) => console.log(response))
