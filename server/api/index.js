@@ -7,9 +7,13 @@ const multer = require("multer");
 const { uploadFile, listBuckets } = require("../firebase");
 let isAdmin = false;
 const admin = { name: "allperensahin", password: "123456" };
-
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const upload = multer();
