@@ -78,8 +78,11 @@ export default {
       formData.append("file", this.files[0]);
       formData.append("album", this.albumField.value);
       formData.append("description", this.textareaField.value);
-      await axios.post("http://192.168.1.171:3000/image", formData);
-      fetch("http://192.168.1.171:3000/image", {
+      await axios.post(
+        "https://photographer-albayrakbektas.vercel.app/api/image",
+        formData
+      );
+      fetch("https://photographer-albayrakbektas.vercel.app/api/image", {
         method: "post",
       })
         .then((response) => console.log(response))

@@ -70,7 +70,7 @@ export default {
   methods: {
     login() {
       let req = axios.create({
-        baseURL: "http://192.168.1.171:3000/",
+        baseURL: "https://photographer-albayrakbektas.vercel.app/api/",
       });
       req
         .post("/login", {

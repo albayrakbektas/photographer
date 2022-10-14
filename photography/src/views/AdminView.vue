@@ -11,7 +11,9 @@ export default {
   name: "AdminView",
   components: { ImageAddingForm },
   async mounted() {
-    let req = axios.create({ baseURL: "http://192.168.1.171:3000/" });
+    let req = axios.create({
+      baseURL: "https://photographer-albayrakbektas.vercel.app/api/",
+    });
     await req
       .get("/admin")
       .then((res) => {

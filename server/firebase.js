@@ -46,48 +46,8 @@ async function listBuckets() {
       buckets.push(e.metadata.metadata.album);
     }
   });
-  console.log(buckets);
   return buckets;
 }
 listBuckets().catch(console.error);
-
-// async function getFiles() {
-//   await listBuckets();
-//   bucket.getFiles().then((res) => {
-//     // console.log(res[0][0]);
-//   });
-// }
-
-// uploadImages().then((res) => console.log(res));
-
-// function postData() {
-//   //heroes.json dosyası okunuyor
-//   const jsonFile = fs.readFileSync("./heroes.json");
-//   const heroes = JSON.parse(jsonFile);
-//
-//   //dota/heroes içerisine json file'ı bind ediyor.
-//   return db
-//     .collection("dota")
-//     .doc("heroes")
-//     .set(heroes)
-//     .then(() => {
-//       console.log("Fresh Meat!!");
-//     });
-// }
-//
-// function getData() {
-//   try {
-//     const docRef = db.doc("dota/heroes");
-//     docRef.get().then((data) => {
-//       if (data && data.exists) {
-//         const responseData = data.data();
-//         console.log(JSON.stringify(responseData, null, "  "));
-//         return JSON.stringify(responseData, null, "  ");
-//       }
-//     });
-//   } catch (e) {
-//     console.log(e);
-//   }
-// }
 
 module.exports = { uploadFile, listBuckets };

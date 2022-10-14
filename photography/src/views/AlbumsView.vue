@@ -34,7 +34,7 @@ export default {
       this.$store.state.isLoading = true;
       this.$store.state.isImageLoaded = false;
       return axios
-        .get("http://192.168.1.171:3000/image")
+        .get("https://photographer-albayrakbektas.vercel.app/api/image")
         .then((res) => {
           return res.data;
         })

@@ -42,7 +42,6 @@ app.get("/api/admin", (req, res) => {
 });
 app.post("/api/login", (req, res) => {
   const { name, password } = req.body;
-  console.log(name, password);
   if (name === admin.name && password === admin.password) {
     isAdmin = true;
     res.status(200).send("ok");
@@ -60,21 +59,5 @@ app.post("/api/upload/image", upload.single("file"), async (req, res) => {
     .catch(() => {
       res.status(401).send("File doesn't saved!");
     });
-  // await uploadFile(file.file, file.album, file.description);
-  // if (
-  //   req.body.user !== "Alperen" ||
-  //   req.body.secret !== "adskljaksljdlkajskldjad"
-  // ) {
-  //   return res.status(401).send({ message: "Invalid vredential" });
-  // }
-
-  // req.body.images;
-  // [ "data:base64;image/jpeg,adsakjskldjaklsjdklajskldjakljsdl" ]
-  // upload to storage
-  // res.send("Ok")
-  // else res.status(400).send({message: "hata mesaji"})
 });
 module.exports = app;
-// app.listen(port, "192.168.1.171", () => {
-//   console.log(port);
-// });
